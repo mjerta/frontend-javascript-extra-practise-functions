@@ -1,6 +1,5 @@
 // -------------------------------  LEVEL 1
 
-
 /* Opdracht 1 */
 // Schrijf een functie die een cijfer verwacht en teruggeeft of het cijfer groter is dan nul
 // ---- Verwachte uitkomsten:
@@ -8,7 +7,11 @@
 // 0 geeft false
 // 300 geeft true
 
-
+function isBiggerThenZero(number) {
+  return number > 0;
+}
+console.log("Opdracht 1 - isBiggerThenZero")
+console.log(isBiggerThenZero(10));
 
 /* Opdracht 2 */
 // Schrijf een functie die twee getallen verwacht en teruggeeft of ze, opgetelt, gróter zijn dan 100.
@@ -17,7 +20,12 @@
 // 8 en 92 geeft false
 // 89 en 14 geeft true
 
-
+function combinedNumbersBiggerThenHundred(number1, number2) {
+  const sumCombinedNumbers = number1 + number2;
+  return sumCombinedNumbers > 100;
+}
+console.log("Opdracht 2 - combinedNumbersBiggerThenHundred")
+console.log(combinedNumbersBiggerThenHundred(50,50));
 
 /* Opdracht 3 */
 // Schrijf een functie die een zin verwacht en de eerste letter uit de zin omzet naar een hoofdletter.
@@ -25,7 +33,12 @@
 // "de kat krabt de krullen van de trap" geeft "De kat krabt de krullen van de trap"
 // "programmeren is super leuk!" geeft "Programmeren is super leuk!"
 
-
+function upperCase(string) {
+  const firstLetter = string[0].toUpperCase();
+  return firstLetter + string.slice(1);
+}
+console.log("\nOpdracht 3 - upperCase");
+console.log(upperCase("de kat krabt de krullen van de trap"));
 
 /* Opdracht 4 */
 // Schrijf een functie die een argument verwacht en het datatype teruggeeft (boolean, object, undefined, number, string,function)
@@ -34,8 +47,12 @@
 // undefined geeft undefined
 // "Hallo" geeft string
 // [1, 2, 3] geeft object (ja echt!)
+function getType(input) {
+  return typeof input;
+}
 
-
+console.log("\nOpdracht 4 - getType");
+console.log(getType([1,2,3]));
 
 /* Opdracht 5 */
 // Schrijf een functie die een array van strings verwacht. Hoe lang die array is weet je niet van tevoren - het zouden zomaar 100 entries kunnen zijn.
@@ -44,7 +61,33 @@
 // ["abra", "cadabra"] geeft "abracadabra"
 // ["a", "b", "c", "d", "e"] geeft "abcde"
 
+function createRandomString(length) {
+  const charSet = "abcdefghijklmnopqrstuvwxyz";
+  let str = '';
+  for (let i= 0;i < length; i++) {
+    str += charSet[Math.floor(Math.random() * charSet.length)];
+  }
+  return str;
+}
 
+const createRandomArray = (lengthOfArray, stringLength) => {
+  const arr = []
+  for (let i = 0; i < lengthOfArray; i++) {
+    arr.push(createRandomString(stringLength));
+  }
+  return arr;
+}
+
+function joinStrings(array) {
+  let str = "";
+  for (let i = 0; i < array.length; i++) {
+    str += array[i];
+  }
+  return str;
+}
+const newArray = createRandomArray(5,2);
+console.log("\nOpdracht 5 - joinStrings")
+console.log(joinStrings(newArray));
 
 /* Opdracht 6 */
 // Schrijf een functie die een zin verwacht en het langste woord uit die zin teruggeeft. Als er meerdere woorden het langst zijn, wordt het laatste langste woord terug gegeven.
@@ -53,6 +96,17 @@
 // "De eindopdracht telt voor 30 ECTS" geeft "eindopdracht"
 // "Een API staat voor Application Programming Interface. Met deze technologie zul je vaak gaan werken." geeft "technologie"
 
+function getLongestWord(sentence) {
+  const arr = sentence.split(" ")
+  let longestWord = arr[0];
+  for (let i=1; i < arr.length; i++) {
+    if (arr[i].length > longestWord.length) {
+      longestWord = arr[i];
+    }
+  }
+  return longestWord;
+}
+console.log(getLongestWord("Frontend web development"));
 
 // -------------------------------  LEVEL 2
 
@@ -63,8 +117,6 @@
 // "koekje" geeft "ejkeok"
 // "vrienden" geeft "nedneirv"
 
-
-
 // 6b. Schrijf een functie die een woord verwacht checkt of dit woord een palindroom is. Een palindroom is een
 // spiegelwoord: het is hetzelfde zowel vooruit als achterstevoren. Als dit zo is, geeft de functie true terug,
 // zo niet, dan false.
@@ -73,8 +125,6 @@
 // "madam" geeft true
 // "vrienden" geeft false
 
-
-
 /* Opdracht 7 */
 // Schrijf een functie die een string en een letter verwacht. De functie telt hoe vaak die letter voorkomt in
 // de string en geeft dit terug. Je mag hiervoor géén string- of array-methoden gebruiken.
@@ -82,16 +132,12 @@
 // "Hans en marietje lopen naar de supermarkt" en "e" geeft 6
 // "Hans is zijn mondkapje vergeten" en "a" geeft 2
 
-
-
 /* Opdracht 8 */
 // Schrijf een functie die bij iedere aanroep een random string id genereert van 8 tekens. Er mag gebruik gemaakt worden van de volgende karakters:
 // "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"
 // ---- Verwachte (mogelijke) uitkomsten:
 // iizdX7Ax
 // gajxBhGs
-
-
 
 // ------------------------------- LEVEL 3 (optionele bonusopdrachten)
 
@@ -101,8 +147,6 @@
 // ---- Verwachte uitkomsten:
 // lastEntry([3, 6, 9, 17, 4, 6, 25, 8]) geeft 8
 // lastEntry([46, 65, 34, 204, 190, 89], 3) geeft [204, 190, 89]
-
-
 
 /* Opdracht 10 */
 // Schrijf een functie die geen parameters verwacht en de getallen 1 tot 100 print.
@@ -141,8 +185,6 @@
 // 29
 // FizzBuzz
 // etc.
-
-
 
 /* Opdracht 11 */
 // Schrijf een functie die een array van strings verwacht en een gezamelijke groet teruggeeft, ongeacht hoeveel items er in de array staan.
