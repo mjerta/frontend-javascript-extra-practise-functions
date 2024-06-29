@@ -10,6 +10,7 @@
 function isBiggerThenZero(number) {
   return number > 0;
 }
+
 console.log("Opdracht 1 - isBiggerThenZero")
 console.log(isBiggerThenZero(10));
 
@@ -24,8 +25,9 @@ function combinedNumbersBiggerThenHundred(number1, number2) {
   const sumCombinedNumbers = number1 + number2;
   return sumCombinedNumbers > 100;
 }
+
 console.log("Opdracht 2 - combinedNumbersBiggerThenHundred")
-console.log(combinedNumbersBiggerThenHundred(50,50));
+console.log(combinedNumbersBiggerThenHundred(50, 50));
 
 /* Opdracht 3 */
 // Schrijf een functie die een zin verwacht en de eerste letter uit de zin omzet naar een hoofdletter.
@@ -37,6 +39,7 @@ function upperCase(string) {
   const firstLetter = string[0].toUpperCase();
   return firstLetter + string.slice(1);
 }
+
 console.log("\nOpdracht 3 - upperCase");
 console.log(upperCase("de kat krabt de krullen van de trap"));
 
@@ -52,7 +55,7 @@ function getType(input) {
 }
 
 console.log("\nOpdracht 4 - getType");
-console.log(getType([1,2,3]));
+console.log(getType([1, 2, 3]));
 
 /* Opdracht 5 */
 // Schrijf een functie die een array van strings verwacht. Hoe lang die array is weet je niet van tevoren - het zouden zomaar 100 entries kunnen zijn.
@@ -64,7 +67,7 @@ console.log(getType([1,2,3]));
 function createRandomString(length) {
   const charSet = "abcdefghijklmnopqrstuvwxyz";
   let str = '';
-  for (let i= 0;i < length; i++) {
+  for (let i = 0; i < length; i++) {
     str += charSet[Math.floor(Math.random() * charSet.length)];
   }
   return str;
@@ -85,7 +88,8 @@ function joinStrings(array) {
   }
   return str;
 }
-const newArray = createRandomArray(5,2);
+
+const newArray = createRandomArray(5, 2);
 console.log("\nOpdracht 5 - joinStrings")
 console.log(joinStrings(newArray));
 
@@ -99,13 +103,14 @@ console.log(joinStrings(newArray));
 function getLongestWord(sentence) {
   const arr = sentence.split(" ")
   let longestWord = arr[0];
-  for (let i=1; i < arr.length; i++) {
+  for (let i = 1; i < arr.length; i++) {
     if (arr[i].length > longestWord.length) {
       longestWord = arr[i];
     }
   }
   return longestWord;
 }
+
 console.log(getLongestWord("Frontend web development"));
 
 // -------------------------------  LEVEL 2
@@ -117,6 +122,31 @@ console.log(getLongestWord("Frontend web development"));
 // "koekje" geeft "ejkeok"
 // "vrienden" geeft "nedneirv"
 
+function reverseWordWithMethods(word) {
+  return word.split("").reverse().join("");
+}
+
+console.log("\n Opdracht 6 - reverseWordWithMethods")
+console.log(reverseWordWithMethods("koekje"));
+
+function reverseWordWithoutMethods(word) {
+  if (word === "") {
+    return word;
+  } else {
+    return reverseWordWithoutMethods(word.slice(1)) + word.charAt(0);
+    // let remainingWord = word.slice(1);
+    // let firstChar = word.charAt(0);
+    // let result = reverseWordWithoutMethods(remainingWord) + firstChar;
+
+    // Debugging log to see the intermediate steps
+    // console.log(`remainingWord: "${remainingWord}", firstChar: "${firstChar}", result: "${result}"`);
+    // return result;
+  }
+}
+
+console.log("\nOpracht 6 - reverseWordWithMethods");
+console.log(reverseWordWithoutMethods("hello"));
+
 // 6b. Schrijf een functie die een woord verwacht checkt of dit woord een palindroom is. Een palindroom is een
 // spiegelwoord: het is hetzelfde zowel vooruit als achterstevoren. Als dit zo is, geeft de functie true terug,
 // zo niet, dan false.
@@ -125,6 +155,13 @@ console.log(getLongestWord("Frontend web development"));
 // "madam" geeft true
 // "vrienden" geeft false
 
+function isPalindroom(word) {
+  return word === reverseWordWithMethods(word);
+}
+
+console.log("\nOpdracht 6b");
+console.log(isPalindroom("madam"));
+
 /* Opdracht 7 */
 // Schrijf een functie die een string en een letter verwacht. De functie telt hoe vaak die letter voorkomt in
 // de string en geeft dit terug. Je mag hiervoor géén string- of array-methoden gebruiken.
@@ -132,12 +169,37 @@ console.log(getLongestWord("Frontend web development"));
 // "Hans en marietje lopen naar de supermarkt" en "e" geeft 6
 // "Hans is zijn mondkapje vergeten" en "a" geeft 2
 
+function checkAmountOfSpecificLetter(string, character) {
+  let count = 0;
+  for(let i = 0; i < string.length; i++) {
+    if(string[i] === character) {
+      count++
+    }
+  }
+  return count;
+}
+console.log("\nOPdracht 7");
+const amountOfCharacters = checkAmountOfSpecificLetter("Hans en marietje lopen naar de supermarkt", "e");
+console.log(amountOfCharacters);
+
 /* Opdracht 8 */
 // Schrijf een functie die bij iedere aanroep een random string id genereert van 8 tekens. Er mag gebruik gemaakt worden van de volgende karakters:
 // "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"
 // ---- Verwachte (mogelijke) uitkomsten:
 // iizdX7Ax
 // gajxBhGs
+
+function randomStringId() {
+  const charSet = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+  let randomStringID = "";
+
+  for (let i =0; i < 8; i++) {
+    randomStringID += charSet[Math.floor(Math.random() * charSet.length)]
+  }
+  return randomStringID;
+}
+console.log("\nOpdracht 8");
+console.log(randomStringId());
 
 // ------------------------------- LEVEL 3 (optionele bonusopdrachten)
 
