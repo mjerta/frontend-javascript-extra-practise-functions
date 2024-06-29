@@ -171,13 +171,14 @@ console.log(isPalindroom("madam"));
 
 function checkAmountOfSpecificLetter(string, character) {
   let count = 0;
-  for(let i = 0; i < string.length; i++) {
-    if(string[i] === character) {
+  for (let i = 0; i < string.length; i++) {
+    if (string[i] === character) {
       count++
     }
   }
   return count;
 }
+
 console.log("\nOPdracht 7");
 const amountOfCharacters = checkAmountOfSpecificLetter("Hans en marietje lopen naar de supermarkt", "e");
 console.log(amountOfCharacters);
@@ -193,11 +194,12 @@ function randomStringId() {
   const charSet = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
   let randomStringID = "";
 
-  for (let i =0; i < 8; i++) {
+  for (let i = 0; i < 8; i++) {
     randomStringID += charSet[Math.floor(Math.random() * charSet.length)]
   }
   return randomStringID;
 }
+
 console.log("\nOpdracht 8");
 console.log(randomStringId());
 
@@ -209,6 +211,16 @@ console.log(randomStringId());
 // ---- Verwachte uitkomsten:
 // lastEntry([3, 6, 9, 17, 4, 6, 25, 8]) geeft 8
 // lastEntry([46, 65, 34, 204, 190, 89], 3) geeft [204, 190, 89]
+
+function lastEntry(arr, n) {
+  if (n) {
+    return arr.slice(-n);
+  }
+  return arr[arr.length - 1];
+}
+
+console.log("\nOpdracht 9 - lastEntry");
+console.log(lastEntry([46, 65, 34, 204, 190, 89], 2))
 
 /* Opdracht 10 */
 // Schrijf een functie die geen parameters verwacht en de getallen 1 tot 100 print.
@@ -248,6 +260,23 @@ console.log(randomStringId());
 // FizzBuzz
 // etc.
 
+function fizzBuzz() {
+  for (let i = 1; i <= 100; i++) {
+    if (i % 3 === 0 && i % 5 === 0) {
+      console.log("FizzBuzz");
+    } else if (i % 3 === 0) {
+      console.log("Fizz");
+    } else if (i % 5 === 0) {
+      console.log("Buzz");
+    } else {
+      console.log(i)
+    }
+  }
+}
+
+console.log("\nOpdracht10 - FizzBuzz");
+fizzBuzz();
+
 /* Opdracht 11 */
 // Schrijf een functie die een array van strings verwacht en een gezamelijke groet teruggeeft, ongeacht hoeveel items er in de array staan.
 // ---- Verwachte uitkomsten:
@@ -255,3 +284,11 @@ console.log(randomStringId());
 // ["Piet", "Henk"] geeft "Hoi Piet en Henk!"
 // ["A", "B", "C", "D", "E", "F"] geeft "Hoi A, B, C, D, E en F!"
 
+function greetings(arr) {
+  lastEntry = arr.pop();
+  return `Hoi ${arr.join(", ")} en ${lastEntry}!`;
+}
+
+const greetOne = greetings(["Nick", "Nova", "Mitchel", "Arjen"]);
+console.log("\nopdracht5 - greetings")
+console.log(greetOne);
